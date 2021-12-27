@@ -6,6 +6,7 @@ Microservice with gRPC & REST API writen golang with:
 - MYSQL
 - GO GIN Framework (REST)
 - GO gRPC proto (gRPC)
+- Go Groutine
 - Unit Testing
 - DDD (Domain Driven Design) approach
 
