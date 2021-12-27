@@ -34,6 +34,16 @@ Running up Microservices
 docker-compose up -d 
 ```
 
+Test URL Search Movie Rest Api (Method GET)
+```
+http://localhost:9090/v1/search-movie?keyword=Batman&page=1
+``` 
+
+Test URL Detail Movie Rest Api with id IMDB (Method GET)
+```
+http://localhost:9090/v1/detail-movie/tt0076759
+```
+
 Running unit test & integration test
 ``` 
 docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit 
