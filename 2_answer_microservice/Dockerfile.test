@@ -1,0 +1,12 @@
+FROM golang:alpine
+
+RUN set -ex; \
+    apk update; \
+    apk add --no-cache git
+
+COPY .env /usr/src/app/
+COPY .  /usr/src/app/
+
+WORKDIR /usr/src/app/
+
+CMD CGO_ENABLED=0 go test ./... -v

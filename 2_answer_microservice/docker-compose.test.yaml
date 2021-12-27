@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  server_grpc:
+    container_name: server_grpc
+    build: 
+      context: .
+      dockerfile: Dockerfile.grpc
+    ports: 
+      - 9292:9292
+    restart: on-failure
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      - mysql
+    networks:
+      - integration-test
+
+  server_rest:
+    container_name: server_rest
+    build: 
+      context: .
+      dockerfile: Dockerfile.rest
+    ports: 
+      - 9090:9090
+    restart: on-failure
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      - server_grpc
+    networks:
+      - integration-test
+
+  server-grpc-rest-test:
+    container_name: server-grpc-test
+    build: 
+      context: .
+      dockerfile: Dockerfile.test
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/src/app/
+    depends_on:
+      - server_grpc
+      - server_rest
+    networks:
+      - integration-test
+
+  mysql:
+    image: mysql:5.7
+    container_name: database-mysql-test
+    ports: 
+      - 3306:3306
+    env_file:
+      - .env-mysql
+    volumes:
+      - database_mysql_test:/var/lib/mysql
+    networks:
+      - integration-test
+
+volumes:
+  database_mysql_test:                  
+
+# Networks to be created to facilitate communication between containers
+networks:
+  integration-test:
+    driver: bridge
