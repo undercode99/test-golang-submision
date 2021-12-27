@@ -1,5 +1,3 @@
-import "strings"
-
 func findFirstStringInBracket(str string) string {
 	if len(str) == 0 {
 		return ""
