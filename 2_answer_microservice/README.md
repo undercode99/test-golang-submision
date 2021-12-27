@@ -10,6 +10,9 @@ Microservice with gRPC & REST API writen golang with:
 - DDD (Domain Driven Design) approach
 
 Arsitecture:
+![Arsitecture](https://raw.githubusercontent.com/undercode99/test-golang-submision/main/2_answer_microservice/flowmicro.png)
+
+
 
 
 # Getting start
@@ -17,7 +20,7 @@ Arsitecture:
 Clone repository
 
 ```
-git clone
+git clone https://github.com/undercode99/test-golang-submision.git
 cd 2_answer_microservice
 ```
 
